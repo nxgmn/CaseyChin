@@ -1,0 +1,28 @@
+.name {
+
+    justify-self: center;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;  
+    font-size: x-large;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 1rem;
+
+}
+
+.name :hover {
+
+    color: #007acc;
+
+}
+.navbar-container  {
+
+    display: inline-flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 0 5%;
+    margin: 0;
+    justify-self: center;
+
+}

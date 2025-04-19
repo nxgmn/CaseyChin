@@ -12,6 +12,7 @@ export default function Projects() {
       const { data, error } = await supabase
         .from('Projects')
         .select('*')
+        .eq('visible', true)
         .order('date', { ascending: true });
 
       if (error) {
@@ -39,8 +40,15 @@ export default function Projects() {
               key={project.id}
               className="project-card"
             >
-              <h3>{project.title}</h3>
-              <p>{project.short_desc}</p>
+              <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+              <p className="text-sm text-gray-600 mb-2">
+                {project.short || project.short_desc || 'No short description provided.'}
+              </p>
+              {project.stack && Array.isArray(project.stack) && (
+                <div className="tech-stack text-xs text-gray-500 italic">
+                  {project.stack.join(', ')}
+                </div>
+              )}
             </Link>
           ))}
         </div>

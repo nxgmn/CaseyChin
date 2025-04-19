@@ -1,9 +1,17 @@
-.project-grid {
+/* =======================================================
+   PROJECT GRID LAYOUT
+   ======================================================= */
+
+   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.75rem;
+    gap: 5rem 1.75rem;
     padding-bottom: 2rem;
   }
+  
+  /* =======================================================
+     PROJECT CARD STYLING
+     ======================================================= */
   
   .project-card {
     background-color: #ffffff;
@@ -15,6 +23,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    text-decoration: none;
+    color: inherit;
   }
   
   .project-card:hover {
@@ -22,6 +32,7 @@
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
   }
   
+  /* Title */
   .project-card h3 {
     font-size: 1.2rem;
     font-weight: 600;
@@ -30,20 +41,20 @@
     line-height: 1.4;
   }
   
+  /* Description */
   .project-card p {
     color: #4b5563; /* gray-700 */
     font-size: 0.95rem;
     line-height: 1.6;
+    margin-bottom: 0.5rem;
   }
   
+  /* Tech stack / tags */
+  .tech-stack,
   .project-tags {
     font-size: 0.8rem;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     color: #6b7280; /* gray-500 */
+    font-style: italic;
   }
-
-  .project-card {
-    height: 80%;
-  }
-  
   
