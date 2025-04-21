@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import About from './pages/About';
 import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Experience from './pages/Experience';
@@ -17,6 +16,8 @@ import Contact from './pages/Contact';
 import Log from './pages/Log';
 import Admin from './pages/Admin';
 import ProjectDetail from './pages/ProjectDetail';
+import ProjectsDashboard from './pages/ProjectsDashboard';
+import LogsDashboard from './pages/LogsDashboard';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -33,14 +34,15 @@ function AnimatedRoutes() {
       >
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/log" element={<Log />} />
+          <Route path="/logs" element={<Log />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/admin/projects" element={<ProjectsDashboard />} />
+          <Route path="admin/logs" element={<LogsDashboard />} />
         </Routes>
       </motion.main>
     </AnimatePresence>

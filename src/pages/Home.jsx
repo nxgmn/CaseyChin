@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
+import './Home.css';
 
 export default function Home() {
   const [logs, setLogs] = useState([]);
@@ -10,6 +11,7 @@ export default function Home() {
       const { data, error } = await supabase
         .from('Logs')
         .select('*')
+        .eq('visible', true)
         .order('date', { ascending: false })
         .limit(3);
 
@@ -24,43 +26,60 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <section className="home-container">
-        <h1 className="text-3xl font-bold mb-4">Hey, I'm Casey 👋</h1>
-
-        <p className="mb-4 text-gray-700">
-          I’m a Computer Science and Economics student at RIT, usually found building tools to help me stay focused (because staying focused is hard), writing logs when I remember to, and trying to figure out how everything connects.
-        </p>
-
-        <p className="mb-4 text-gray-700">
-          This site is where I keep track of the stuff I’m working on, learning, or experimenting with. It’s not meant to be polished — more like a living record of where I’m at.
-        </p>
-
-        <p className="mb-4 text-gray-700">Right now I’m:</p>
-
-        <ul className="list-disc list-inside text-gray-700 mb-4">
-          <li>Prepping for my summer internship at Liberty Mutual</li>
-          <li>Learning AWS and building a few projects</li>
-          <li>Very slowly working on this website</li>
-        </ul>
-
-        <p className="text-gray-700">
-          You can check out my <Link to="/projects" className="text-blue-600 hover:underline">projects</Link>, peek at what I’ve <Link to="/log" className="text-blue-600 hover:underline">been working on</Link>, or just click around.
+    <div className="home-page px-6 py-10 max-w-4xl mx-auto">
+      {/* Intro Section */}
+      <section className="mb-12">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Hi, I’m Casey Chin</h1>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          I’m a second-year Computer Science and Economics student at the Rochester Institute of Technology. I love exploring new technologies, learning by building, and turning ideas into real, impactful software.
         </p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-xl font-semibold mb-2">Latest Updates</h2>
-        <ul className="list-disc list-inside text-gray-800 mb-2">
-          {logs.map((entry) => (
-            <li key={entry.id}>
-              <span className="text-sm text-gray-600 mr-2">{entry.date}:&nbsp;</span>
-              {entry.content}
-            </li>
-          ))}
-        </ul>
-        <Link to="/log" className="text-blue-600 hover:underline">View All Updates →</Link>
+      {/* What I Do Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-2">What I Do</h2>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          I like making fun projects and little productivity tools in my free time. Plus anything else that'll help me to learn something new. Check it out!
+        </p>
+        <Link to="/projects" className="text-blue-600 hover:underline">Explore my projects →</Link>
       </section>
-    </>
+
+      {/* What I've Done Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-2">What I’ve Done</h2>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          I like to think I've done a couple cool things in the past. Worked with different people, explored different areas, accomplished a couple things here and there.
+        </p>
+        <Link to="/experience" className="text-blue-600 hover:underline">View my experiences →</Link>
+      </section>
+
+      {/* Latest Updates Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-2">What’s Coming Up</h2>
+        {logs.length === 0 ? (
+          <p className="text-gray-500 italic">No recent logs yet.</p>
+        ) : (
+          <ul className="space-y-3 text-gray-800">
+            {logs.map((entry) => {
+              const maxLength = 80;
+              const content =
+                entry.content.length > maxLength
+                  ? entry.content.slice(0, maxLength).split(' ').slice(0, -1).join(' ') + ' ...'
+                  : entry.content;
+
+              return (
+                <li key={entry.id} className="flex items-start gap-4">
+                  <span className="min-w-[90px] text-sm text-gray-500">{entry.date} &nbsp;</span>
+                  <span className="flex-1 leading-relaxed">{content}</span>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <div className="mt-2">
+          <Link to="/logs" className="text-blue-600 hover:underline">View all updates →</Link>
+        </div>
+      </section>
+    </div>
   );
 }
