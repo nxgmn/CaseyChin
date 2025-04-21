@@ -54,7 +54,6 @@ export default function Admin() {
     }
   };
   
-  
   const handleProjectSubmit = async (e) => {
     e.preventDefault();
     const { title, short, description, stack, github, demo, images, date } = projectData;
