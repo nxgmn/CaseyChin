@@ -1,16 +1,33 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../lib/supabaseClient';
 
 export default function SecretLogin() {
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
+    setError('');
+
+    const { data, error } = await supabase
+      .from('secrets')
+      .select('value')
+      .eq('key', 'admin_pass')
+      .single();
+
+    if (error) {
+      console.error('Error fetching password:', error);
+      setError('Something went wrong.');
+      return;
+    }
+
+    if (password === data.value) {
+      localStorage.setItem('admin_auth', 'true');
       navigate('/admin');
     } else {
-      alert('Incorrect password');
+      setError('Incorrect password');
     }
   };
 
@@ -25,9 +42,8 @@ export default function SecretLogin() {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-2 border rounded mb-4"
         />
-        <button type="submit" className="text-blue-600 hover:underline">
-          Enter
-        </button>
+        <button type="submit" className="text-blue-600 hover:underline">Enter</button>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
       </form>
     </section>
   );
