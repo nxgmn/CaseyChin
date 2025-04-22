@@ -61,7 +61,7 @@ export default function Home() {
         ) : (
           <ul className="space-y-3 text-gray-800">
             {logs.map((entry) => {
-              const maxLength = 80;
+              const maxLength = 120;
               const content =
                 entry.content.length > maxLength
                   ? entry.content.slice(0, maxLength).split(' ').slice(0, -1).join(' ') + ' ...'
