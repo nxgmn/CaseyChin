@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import './Admin.css';
+import BackButton from '../components/BackButton';
 
 export default function LogsDashboard() {
   // Form state
@@ -95,6 +96,7 @@ export default function LogsDashboard() {
   /* ------------------------------- Render ------------------------------ */
   return (
     <div className="logs-dashboard">
+      <BackButton />
       {/* ---------------------------- Add Form --------------------------- */}
       <form onSubmit={handleLogSubmit} className="admin-form mb-10">
         <h3 className="text-xl font-semibold mb-2">Add Log Entry</h3>

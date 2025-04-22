@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import './Admin.css';
+import BackButton from '../components/BackButton';
 
 export default function ProjectsDashboard() {
   /* ---------------------- State for Add‑Project Form -------------------- */
@@ -173,7 +174,9 @@ export default function ProjectsDashboard() {
 
   /* ------------------------------- Render ------------------------------ */
   return (
-    <div className="projects-dashboard">
+    <div className="projects-dashboard admin-container">
+
+      <BackButton />
       {/* ---------------------- Add‑Project Form ------------------------ */}
       <form onSubmit={handleProjectSubmit} className="admin-form mb-10">
         <h3 className="text-xl font-semibold mb-2">Add Project</h3>
@@ -294,6 +297,7 @@ export default function ProjectsDashboard() {
                         >
                           Save
                         </button>
+                        <>&nbsp;&nbsp;&nbsp;</>
                         <button
                           className="text-gray-600 hover:underline"
                           onClick={cancelEdit}
@@ -309,6 +313,7 @@ export default function ProjectsDashboard() {
                         >
                           Edit
                         </button>
+                        <>&nbsp;&nbsp;&nbsp;</>
                         <button
                           className="text-red-600 hover:underline"
                           onClick={() => handleDelete(project.id)}

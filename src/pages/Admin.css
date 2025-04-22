@@ -1,8 +1,26 @@
-.admin-container {
-    max-width: 700px;
+/* =======================================================
+   GENERAL LAYOUT
+   ======================================================= */
+
+   .projects-dashboard {
+    max-width: 960px;
     margin: 2rem auto;
     padding: 2rem 1rem;
   }
+  .admin-container {
+    max-width: 960px; /* or even 1024px if you want more breathing room */
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+  }
+
+  .admin-table {
+    width: 100%;
+    min-width: 600px; /* allows table to expand properly */
+  }
+  
+  /* =======================================================
+     ADD PROJECT FORM
+     ======================================================= */
   
   .admin-form {
     background-color: #ffffff;
@@ -19,20 +37,23 @@
   }
   
   .admin-form input[type="text"],
+  .admin-form input[type="date"],
   .admin-form textarea {
     width: 96%;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
-    transition: border-color 0.2s ease;
     margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
   }
   
-  .admin-form input[type="text"]:focus,
+  .admin-form input:focus,
   .admin-form textarea:focus {
     outline: none;
-    border-color: #3b82f6; /* Tailwind blue-600 */
+    border-color: #3b82f6;
   }
   
   .admin-form button[type="submit"] {
@@ -48,214 +69,167 @@
   }
   
   .admin-form button:hover {
-    background-color: #2563eb; /* Tailwind blue-700 */
+    background-color: #2563eb;
   }
-
-  /* ---- Logs view container ---- */
-.logs-box {
-  max-height: 60vh;          /* limit height so it never runs off‑page   */
-  overflow-y: auto;          /* enable vertical scroll                   */
-  border: 1px solid #d1d5db; /* light gray  border (tailwind’s gray‑300) */
-  border-radius: 0.5rem;     /* rounded corners                          */
-  padding: 1rem;             /* inner breathing room                     */
-  background: #ffffff;       /* stay on top of darker pages              */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-/* ---- Sticky table header & tighter cell spacing ---- */
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.admin-table th,
-.admin-table td {
-  padding: 0.5rem 0.75rem;
-}
-
-.admin-table thead th {
-  position: sticky;
-  top: 0;
-  background: #f8f8f8; /* stays visible while scrolling */
-  z-index: 1;
-}
-
-/* Optional softer row separators */
-.admin-table tr:not(:last-child) {
-  border-bottom: 1px solid #e5e7eb; /* tailwind gray‑200 */
-}
-
   
-/* shared scrollable box */
-.box-scroll {
-  max-height: 60vh;
-  overflow-y: auto;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-}
-
-/* =======================================================
-   PROJECTS DASHBOARD
-   ======================================================= */
-
-/* --- Scrollable list wrapper (already on <div class="box-scroll">) --- */
-.box-scroll {
-  max-height: 60vh;
-  overflow-y: auto;
-  border: 1px solid #d1d5db;         /* gray‑300 */
-  border-radius: 0.5rem;
-  background: #fff;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-}
-
-/* --- Table basics ---------------------------------------------------- */
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.admin-table th,
-.admin-table td {
-  padding: 0.5rem 0.75rem;
-  vertical-align: top;
-}
-
-.admin-table thead th {
-  position: sticky;
-  top: 0;
-  background: #f9fafb;               /* gray‑50 */
-  border-bottom: 1px solid #e5e7eb;  /* gray‑200 */
-  z-index: 1;
-}
-
-/* zebra‑striping rows for readability */
-.admin-table tbody tr:nth-child(even) {
-  background: #fafafa;
-}
-
-/* hover effect */
-.admin-table tbody tr:hover {
-  background: #f3f4f6;               /* gray‑100 */
-}
-
-/* --- Buttons inside table ------------------------------------------- */
-.admin-table button {
-  font-size: 0.875rem;
-}
-
-.admin-table .text-blue-600   { color: #2563eb; } /* edit */
-.admin-table .text-red-600    { color: #dc2626; } /* delete */
-.admin-table .text-green-600  { color: #16a34a; } /* save */
-.admin-table .text-gray-600   { color: #52525b; } /* cancel */
-
-.admin-table button:hover {
-  text-decoration: underline;
-}
-
-/* --- Checkbox centering --------------------------------------------- */
-.admin-table input[type=\"checkbox\"] {
-  width: 16px;
-  height: 16px;
-  accent-color: #2563eb;             /* tailwind blue‑600 */
-}
-
-/* --- Inline‑edit row highlight -------------------------------------- */
-.admin-table tr.editing,
-.admin-table tr.editing:hover {
-  background: #eef2ff;               /* indigo‑50 */
-}
-
-/* You get that highlight simply by adding the class
-     className={editingId === project.id ? 'border-t editing' : 'border-t'}
-   (optional, but nice UX; doesn’t break anything if omitted)
-*/
-
-/* =======================================================
-   DETAILED EDIT PANEL
-   ======================================================= */
-
-.projects-dashboard form.mt-6 {        /* the “Edit Project Details” pane */
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background: #f8fafc;                /* slate‑50 */
-  box-shadow: 0 2px 6px rgba(0,0,0,.04);
-}
-
-.projects-dashboard form.mt-6 label {
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.projects-dashboard form.mt-6 input,
-.projects-dashboard form.mt-6 textarea {
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  padding: 0.45rem 0.6rem;
-}
-
-.projects-dashboard form.mt-6 input:focus,
-.projects-dashboard form.mt-6 textarea:focus {
-  outline: none;
-  border-color: #2563eb;              /* blue‑600 */
-  box-shadow: 0 0 0 1px #2563eb33;
-}
-
-.projects-dashboard form.mt-6 button {
-  font-weight: 500;
-}
-
-/* save / cancel colors already inherited from text‑* utility classes */
-
-/* =======================================================
-   MOBILE RESPONSIVENESS
-   ======================================================= */
-
-/* On screens < 640 px, allow the table to scroll horizontally */
-@media (max-width: 639px) {
-  .admin-table {
-    min-width: 600px;
-  }
+  /* =======================================================
+     PROJECTS TABLE
+     ======================================================= */
+  
   .box-scroll {
+    max-height: 60vh;
+    overflow-y: auto;
     overflow-x: auto;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
-}
-
-/* ------------------ Form Grid Layout ------------------ */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1rem 1.5rem;
-  align-items: center;
-}
-
-.form-grid label {
-  font-weight: 500;
-}
-
-.form-grid input,
-.form-grid textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  font-size: 0.9rem;
-}
-
-.form-grid input:focus,
-.form-grid textarea:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 1px #2563eb33;
-}
-
-/* Optional: stack to single column on small screens */
-@media (max-width: 640px) {
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 0.5rem 0.75rem;
+    vertical-align: top;
+  }
+  
+  .admin-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 1;
+  }
+  
+  .admin-table tbody tr:nth-child(even) {
+    background: #fafafa;
+  }
+  
+  .admin-table tbody tr:hover {
+    background: #f3f4f6;
+  }
+  
+  .admin-table input[type="text"] {
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  /* Buttons in table */
+  .admin-table button {
+    font-size: 0.875rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .admin-table button:hover {
+    text-decoration: underline;
+  }
+  
+  .admin-table .text-blue-600   { color: #2563eb; } /* Edit */
+  .admin-table .text-red-600    { color: #dc2626; } /* Delete */
+  .admin-table .text-green-600  { color: #16a34a; } /* Save */
+  .admin-table .text-gray-600   { color: #52525b; } /* Cancel */
+  
+  .admin-table input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #2563eb;
+  }
+  
+  .admin-table tr.editing,
+  .admin-table tr.editing:hover {
+    background: #eef2ff;
+  }
+  
+  /* =======================================================
+     EDIT FORM BELOW TABLE
+     ======================================================= */
+  
+  .projects-dashboard form.mt-6 {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .projects-dashboard form.mt-6 label {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .projects-dashboard form.mt-6 input,
+  .projects-dashboard form.mt-6 textarea {
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.45rem 0.6rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  
+  .projects-dashboard form.mt-6 input:focus,
+  .projects-dashboard form.mt-6 textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px #2563eb33;
+  }
+  
+  /* =======================================================
+     FORM GRID
+     ======================================================= */
+  
   .form-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem 1.5rem;
+    align-items: center;
   }
-}
+  
+  .form-grid label {
+    font-weight: 500;
+  }
+  
+  .form-grid input,
+  .form-grid textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-grid input:focus,
+  .form-grid textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px #2563eb33;
+  }
+  
+  /* Responsive: stack fields on small screens */
+  @media (max-width: 640px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .admin-table {
+      min-width: 600px;
+    }
+  
+    .box-scroll {
+      overflow-x: auto;
+    }
+  }
+  

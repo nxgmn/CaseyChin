@@ -1,0 +1,18 @@
+.back-button {
+    background: none;
+    border: none;
+    color: #007acc;              /* matches your links */
+    font-family: inherit;        /* inherits site font */
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+  
+  .back-button:hover {
+    text-decoration: underline;
+    color: #005fa3;              /* optional: darker on hover */
+  }
+  
