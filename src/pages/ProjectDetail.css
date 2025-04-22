@@ -1,0 +1,14 @@
+.tech-stack {
+    color: #4b5563; /* A soft gray, like Tailwind's text-gray-600 */
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  
+  .tech-stack .dot {
+    margin: 0 0.4rem;
+    color: #9ca3af; /* Lighter gray dot if you want it subtle */
+  }
+  

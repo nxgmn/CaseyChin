@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 
 import BackButton from '../components/BackButton';
 
+import './ProjectDetail.css'
+
 
 export default function ProjectDetail() {
   const { title } = useParams();
@@ -56,13 +58,15 @@ export default function ProjectDetail() {
       <p className="text-gray-700 mb-4">{project.description}</p>
 
       {project.stack && Array.isArray(project.stack) && (
-        <div className="text-gray-600 flex flex-wrap gap-2">
+        <div className="tech-stack">
           {project.stack.map((tech, index) => (
-            <span key={index} className="flex items-center gap-1 after:content-['•'] last:after:content-none">
-              <span>{tech}</span>
+            <span key={index}>
+              {tech}
+              {index < project.stack.length - 1 && <span className="dot"> • </span>}
             </span>
           ))}
         </div>
+
       )}
 
       {project.github && (
