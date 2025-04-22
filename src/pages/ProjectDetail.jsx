@@ -76,7 +76,8 @@ export default function ProjectDetail() {
           View on GitHub
         </a>
       )}
-
+      <br></br>
+      <br></br>
       {project.demo && (
         <a
           href={project.demo}
