@@ -40,7 +40,7 @@ function AnimatedRoutes() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/logs" element={<Log />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/projects/:title" element={<ProjectDetail />} />
           <Route path="/admin/projects" element={<ProjectsDashboard />} />
           <Route path="admin/logs" element={<LogsDashboard />} />
         </Routes>
@@ -52,9 +52,11 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
+      <div className="app-container">
       <Navbar />
       <AnimatedRoutes />
       <Footer />
+      </div>
     </Router>
   );
 }

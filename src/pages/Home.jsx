@@ -48,7 +48,7 @@ export default function Home() {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-2">What I’ve Done</h2>
         <p className="text-gray-700 leading-relaxed mb-4">
-          I like to think I've done a couple cool things in the past. Worked with different people, explored different areas, accomplished a couple things here and there.
+          I've done some (objectively) cool things in the past. Worked with different people, explored different areas, accomplished a couple things here and there.
         </p>
         <Link to="/experience" className="text-blue-600 hover:underline">View my experiences →</Link>
       </section>

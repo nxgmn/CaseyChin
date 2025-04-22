@@ -41,7 +41,7 @@ export default function ProjectsDashboard() {
       .order('date', { ascending: false });
 
     if (error) {
-      console.error('❌ Error fetching projects:', error);
+      console.error('Error fetching projects:', error);
     } else {
       setProjects(data);
     }
