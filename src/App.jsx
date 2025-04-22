@@ -33,16 +33,16 @@ function AnimatedRoutes() {
         className="p-6"
       >
         <Routes location={location} key={location.pathname}>
-          <Route path="./CaseyChinPortfolio/" element={<Home />} />
-          <Route path="/CaseyChinPortfolio/projects" element={<Projects />} />
-          <Route path="/CaseyChinPortfolio/skills" element={<Skills />} />
-          <Route path="/CaseyChinPortfolio/experience" element={<Experience />} />
-          <Route path="/CaseyChinPortfolio/contact" element={<Contact />} />
-          <Route path="/CaseyChinPortfolio/logs" element={<Log />} />
-          <Route path="/CaseyChinPortfolio/admin" element={<Admin />} />
-          <Route path="/CaseyChinPortfolio/projects/:title" element={<ProjectDetail />} />
-          <Route path="/CaseyChinPortfolio/admin/projects" element={<ProjectsDashboard />} />
-          <Route path="/CaseyChinPortfolio/admin/logs" element={<LogsDashboard />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/logs" element={<Log />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/projects/:title" element={<ProjectDetail />} />
+          <Route path="/admin/projects" element={<ProjectsDashboard />} />
+          <Route path="admin/logs" element={<LogsDashboard />} />
         </Routes>
       </motion.main>
     </AnimatePresence>
@@ -51,7 +51,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/CaseyChinPortfolio">
       <div className="app-container">
       <Navbar />
       <AnimatedRoutes />
