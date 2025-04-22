@@ -20,7 +20,7 @@ export default function Contact() {
       setKeys(prev => {
         const newKeys = [...prev, e.key].slice(-KONAMI_CODE.length);
         if (JSON.stringify(newKeys) === JSON.stringify(KONAMI_CODE)) {
-          navigate('/secret'); // 🔒 Send to secret login page
+          navigate('/secret');
         }
         return newKeys;
       });
@@ -30,7 +30,7 @@ export default function Contact() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [navigate]);
 
-  
+
     return (
       <section>
         <h2 className="text-2xl font-bold">Contact</h2>

@@ -18,6 +18,7 @@ import Admin from './pages/Admin';
 import ProjectDetail from './pages/ProjectDetail';
 import ProjectsDashboard from './pages/ProjectsDashboard';
 import LogsDashboard from './pages/LogsDashboard';
+import SecretLogin from './pages/SecretLogin';
 
 function AnimatedRoutes() {
   const location = useLocation();
