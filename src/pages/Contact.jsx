@@ -1,5 +1,36 @@
 // src/pages/Contact.jsx
+
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const KONAMI_CODE = [
+  "ArrowUp", "ArrowUp",
+  "ArrowDown", "ArrowDown",
+  "ArrowLeft", "ArrowRight",
+  "ArrowLeft", "ArrowRight",
+  "b", "a"
+];
+
 export default function Contact() {
+  const [keys, setKeys] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      setKeys(prev => {
+        const newKeys = [...prev, e.key].slice(-KONAMI_CODE.length);
+        if (JSON.stringify(newKeys) === JSON.stringify(KONAMI_CODE)) {
+          navigate('/secret'); // 🔒 Send to secret login page
+        }
+        return newKeys;
+      });
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [navigate]);
+
+  
     return (
       <section>
         <h2 className="text-2xl font-bold">Contact</h2>

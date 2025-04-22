@@ -43,6 +43,7 @@ function AnimatedRoutes() {
           <Route path="/projects/:title" element={<ProjectDetail />} />
           <Route path="/admin/projects" element={<ProjectsDashboard />} />
           <Route path="admin/logs" element={<LogsDashboard />} />
+          <Route path="/secret" element={<SecretLogin />} />
         </Routes>
       </motion.main>
     </AnimatePresence>
