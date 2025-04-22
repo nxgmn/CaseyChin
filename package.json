@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://nxgmn.github.io/CaseyChinPortfolio",
+  "homepage": "https://nxgmn.github.io/CaseyChin",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

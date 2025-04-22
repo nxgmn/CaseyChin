@@ -53,7 +53,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <Router basename="/CaseyChinPortfolio">
+    <Router basename="/CaseyChin">
       <div className="app-container">
       <Navbar />
       <AnimatedRoutes />
