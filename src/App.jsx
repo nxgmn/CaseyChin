@@ -33,7 +33,7 @@ function AnimatedRoutes() {
         className="p-6"
       >
         <Routes location={location} key={location.pathname}>
-          <Route path="/CaseyChinPortfolio/" element={<Home />} />
+          <Route path="./CaseyChinPortfolio/" element={<Home />} />
           <Route path="/CaseyChinPortfolio/projects" element={<Projects />} />
           <Route path="/CaseyChinPortfolio/skills" element={<Skills />} />
           <Route path="/CaseyChinPortfolio/experience" element={<Experience />} />
