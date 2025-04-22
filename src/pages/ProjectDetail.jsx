@@ -56,13 +56,12 @@ export default function ProjectDetail() {
       <p className="text-gray-700 mb-4">{project.description}</p>
 
       {project.stack && Array.isArray(project.stack) && (
-        <div className="mb-4">
-          <h3 className="font-semibold mb-1">Tech Stack</h3>
-          <ul className="list-disc list-inside text-gray-600">
-            {project.stack.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
+        <div className="text-gray-600 flex flex-wrap gap-2">
+          {project.stack.map((tech, index) => (
+            <span key={index} className="flex items-center gap-1 after:content-['•'] last:after:content-none">
+              <span>{tech}</span>
+            </span>
+          ))}
         </div>
       )}
 
